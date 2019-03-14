@@ -5,7 +5,7 @@ those installed by the Haskell `stack` tool from hackage:
 
 1. pandoc-filters (from https://github.com/jnoll/pandoc-filters).
    This is a set of tools for manipulating the Pandoc AST before
-   generating the output.  Ocuco tools uses `makeTable` function to
+   generating the output.  The pattern generator uses the `makeTable` function to
    generate the "Implementation details" table.
 2. pml-bnfc (from https://bitbucket.org/jhnoll/pml-bnfc). This is a
    fork of Andrew Butterfield's pml-bnfc parser suite for PML; it
@@ -22,17 +22,12 @@ will be automatically installed by `stack`.
 
 1. Download _plantuml.jar_ from http://plantuml.com/download
 
-2. Edit the `PLANTUML.jar` macro in Patterns/Makefile in the ocuco repository to specify where you
-   have placed _plantuml.jar_.  The current value is:
-
-        PLANTUML.jar=${HOME}/lib/plantuml.jar
-
-3. Install the Haskell `stack` tool.  On Ubuntu, this can be done with
+2. Install the Haskell `stack` tool.  On Ubuntu, this can be done with
    `apt-get`:
 
         sudo apt-get install haskell-stack
 
-4. If you installed `stack` using `apt-get`, upgrade to the latest
+3. If you installed `stack` using `apt-get`, upgrade to the latest
    version.  
    
         stack install stack
@@ -41,9 +36,8 @@ will be automatically installed by `stack`.
 connection and about 10 minutes.
 
 
-5. Build the Ocuco tools using `stack`:
+5. Build the pattern generator tools using `stack`:
 
-        cd ocuco/tools
         stack build
         stack install
     
@@ -52,11 +46,3 @@ be built, along with Pandoc which has a lot of dependencies.  Again,
 ensure your internet connection is reliable and plan on about half an
 hour to finish the whole process.
 
-6. Test by building the C1 pattern:
-
-        cd ocuco/Patterns
-        make C1.md
-        make C1.pdf
-
-    This should create several png images and a PDF file called
-    C1.pdf.
