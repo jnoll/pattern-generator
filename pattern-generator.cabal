@@ -1,0 +1,150 @@
+-- -*- mode: Haskell-Cabal; indent-tabs-mode: nil; -*-
+
+-- The name of the package.
+name:                pattern-generator
+-- The package version.  See the Haskell package versioning policy (PVP) 
+-- for standards guiding when and how versions should be incremented.
+-- http://www.haskell.org/haskellwiki/Package_versioning_policy
+-- PVP summary:      +-+------- breaking API changes
+--                   | | +----- non-breaking API additions
+--                   | | | +--- code changes with no API change
+version:             0.1.0.0
+
+-- A short (one-line) description of the package.
+synopsis:            Tools for creating Aspire-style process patterns from PML models
+
+-- A longer description of the package.
+-- description:         
+
+-- The license under which the package is released.
+license:             MIT
+
+-- The file containing the license text.
+license-file:        LICENSE
+
+-- The package author(s).
+author:              John Noll
+
+-- An email address to which users can send suggestions, bug reports, and 
+-- patches.
+maintainer:          john.noll@lero.ie
+
+-- A copyright notice.
+-- copyright:           
+
+category:            Text
+
+cabal-version:       >=1.10
+
+build-type:          Simple
+
+-- Extra files to be distributed with the package, such as examples or a 
+-- README.
+-- extra-source-files:  
+--data-files: gitit.conf,
+--            Makefile,
+--            README.md,
+--            CHANGES.md,
+--            static/img/logo.png,
+--            static/css/custom.css
+
+source-repository head
+    type:           git
+    location:       
+  -- Constraint on the version of Cabal needed to build this package.
+library
+  build-tools  :   ghc >= 7.0
+  default-language:
+                   Haskell2010
+
+  build-depends:       base >= 4.5 && < 5.0
+                       , lazy-csv
+                       , xml
+
+  -- Directories containing source files.
+  -- hs-source-dirs:      
+  
+  -- Base language which the package is written in.
+  default-language:    Haskell2010
+
+  ghc-options:     -Wall 
+
+  hs-source-dirs:  .
+  exposed-modules:
+
+
+
+executable           pml2dsv
+  hs-source-dirs:    .
+  -- .hs or .lhs file containing the Main module. 
+  main-is:           pml2dsv.hs
+  build-depends:       base >= 4.5 && < 5.0
+                     , lazy-csv
+                     , mtl
+                     , cmdargs
+                     , pandoc
+                     , pandoc-types
+                     , pml-bnfc
+                     , pml-graphit
+
+  default-language:
+                   Haskell2010
+
+  other-modules: CSV, Utils, PML
+
+
+
+
+executable           pattern_content
+  hs-source-dirs:    .
+  -- .hs or .lhs file containing the Main module. 
+  main-is:           pattern_content.hs
+  build-depends:       base >= 4.5 && < 5.0
+                       , cmdargs
+                       , containers
+                       , filepath
+                       , Fullstop
+                       , hxt
+                       , hxt-xpath
+                       , lazy-csv
+                       , mtl
+                       , pandoc
+                       , pandoc-types
+                       , pml-bnfc
+                       , pml-graphit
+                       , pandoc-filters
+                       , here
+                       , xml
+
+  default-language:
+                   Haskell2010
+
+  other-modules:
+           CSV
+          , PML
+          , Utils
+          , XML
+
+executable           gen_pattern
+  hs-source-dirs:    .
+  -- .hs or .lhs file containing the Main module. 
+  main-is:           gen_pattern.hs
+  build-depends:       base >= 4.5 && < 5.0
+                       , cmdargs
+                       , containers
+                       , filepath
+                       , hxt
+                       , hxt-xpath
+                       , lazy-csv
+                       , mtl
+                       , pandoc
+                       , pandoc-types
+                       , pml-bnfc
+                       , pml-graphit
+                       , yaml
+                       , xml
+                       , HStringTemplate
+  default-language:
+                   Haskell2010
+
+  other-modules: CSV, Utils, XML, PML
